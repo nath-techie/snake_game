@@ -1,6 +1,11 @@
 let container = document.getElementsByClassName("container");
-
+const game_start= new Audio('./game_start.mp3');
+const game_over= new Audio('./mario_death_sound.mp3');
+const food_sound = new Audio('./mario_sound.mp3');
+ 
+ 
 function play_clicked() {
+  game_start.play();
   let box = document.getElementById("box");
   let play = document.getElementById("play");
 
@@ -18,6 +23,7 @@ const score = document.getElementById("scoreVal");
 const WIDTH = board.width;
 const HEIGHT = board.height;
 const UNIT = 10;
+
 let snake = [
   { x: UNIT * 5, y: 10 },
   { x: UNIT * 4, y: 10 },
@@ -38,6 +44,7 @@ let gameStarted = false;
 
 window.addEventListener("keydown", arrows);
 gameStart();
+
 
 function gameStart() {
   if (!gameStarted) {
@@ -68,6 +75,7 @@ function loop() {
     context.fillStyle = "black";
     context.textAlign = "center";
     context.fillText("Game Over", WIDTH / 2, HEIGHT / 2);
+    game_over.play();
     restart.removeAttribute("hidden");
   }
 }
@@ -118,6 +126,7 @@ function moveSnake() {
   snake.unshift(head);
   //SNAKE EATING FOOD LOGIC
   if (snake[0].x == foodX && snake[0].y == foodY) {
+    food_sound.play();
     scorevalue += 1;
     score.textContent = scorevalue;
     createFood();

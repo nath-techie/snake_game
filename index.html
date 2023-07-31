@@ -8,17 +8,13 @@
 </head>
 
 <body>
- 
 <button class="PLAY_BUTTON" id="play" onclick="play_clicked()">Lets Play 🐍</button>
-
 <img hidden src="./restart.png" id="restart_button" onclick="restart()">
 <div hidden class="container" id="box">
     <canvas id="board" width="400vmin" height="400vmin"></canvas>
-     <h3>SCORE: <span id="scoreVal">0</span></h3>
-     
+    <h3>SCORE: <span id="scoreVal">0</span></h3>
 </div>
-    
-
+<audio id="gameStartAudio" src="./game_start.mp3" preload="auto"></audio>
 <script src="./index.js"></script>
 </body>
 </html>
